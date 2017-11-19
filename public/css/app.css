@@ -1,0 +1,102 @@
+
+body, html {
+    margin: 0;
+    width: 100%;
+    background-color: rgb(0, 121, 191);
+  }
+
+.app-center {
+    margin: auto;
+    width: 50%;
+}
+
+.task-board {
+    display: inline-block;
+    margin: 5px;
+    width: 30%;
+    vertical-align: text-top;
+    background: #E2E4E6;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.task-board .task-status {
+    padding-left: 5px;
+    font-weight: 700;
+}
+
+.list-card {
+    border: 1px solid #D6DADC;
+    border-bottom-color: #C4C9CC;
+    page-break-inside: avoid
+}
+
+.list-card-title {
+    clear: both;
+    margin: 0 0 4px;
+    overflow: hidden;
+    word-wrap: break-word;
+    color: #4d4d4d;
+}
+
+.list-card, .list-card-title {
+    display: block;
+    text-decoration: none;
+}
+
+.list-card.active-card {
+    background-color: #fff;
+    border-bottom-color: #D6DADC;
+    border-radius: 3px;
+}
+
+.task-search {
+    padding: 3px 5px;
+    border-radius: 2px;
+    border: 0 none;
+    outline: 0 none;
+    font-size: 14px;
+}
+
+.task-monitor {
+    position: relative; 
+    top: 100px;
+}
+
+.task-btn {
+    outline:none;
+    border: none;
+    background: inherit;
+}
+
+.task-editor {
+    margin: 5px;    
+}
+
+.task-editor .task-textarea {
+    overflow: hidden;
+    word-wrap: break-word;
+    resize: none;
+    height: 54px;
+    width: 100%;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
+.task {
+    cursor: pointer;
+}
+
+.task .task-edit {
+    font-size: 11px;
+    position: relative;
+    float: right;
+    right: 6px;
+    top: 5px;
+    visibility: hidden;
+}
+
+.task .task-edit-operation {
+    visibility: visible;
+}
