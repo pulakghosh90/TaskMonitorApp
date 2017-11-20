@@ -29,8 +29,8 @@ class TaskEditor extends React.Component {
             <div className="task-editor" style={this.props.style}>
                 <TextArea className="task-textarea" value={this.state.taskName} focus={this.state.focus}
                     onChange={this.onChange} />
-                <Button label="Submit" className="task-btn" handleClick={this.onEdit} />
-                <Button label="Close" className="task-btn" handleClick={this.onClose} />
+                <Button label="Submit" className="task-btn" onClick={this.onEdit} />
+                <Button label="Close" className="task-btn" onClick={this.onClose} />
             </div>
         );
     }

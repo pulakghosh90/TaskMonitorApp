@@ -1060,8 +1060,8 @@ var TaskEditor = function (_React$Component) {
                 { className: "task-editor", style: this.props.style },
                 _react2.default.createElement(_TextArea2.default, { className: "task-textarea", value: this.state.taskName, focus: this.state.focus,
                     onChange: this.onChange }),
-                _react2.default.createElement(_Button2.default, { label: "Submit", className: "task-btn", handleClick: this.onEdit }),
-                _react2.default.createElement(_Button2.default, { label: "Close", className: "task-btn", handleClick: this.onClose })
+                _react2.default.createElement(_Button2.default, { label: "Submit", className: "task-btn", onClick: this.onEdit }),
+                _react2.default.createElement(_Button2.default, { label: "Close", className: "task-btn", onClick: this.onClose })
             );
         }
     }]);
@@ -1112,7 +1112,7 @@ var Button = function (_React$Component) {
             var className = this.props.className;
             return _react2.default.createElement(
                 "button",
-                { type: "button", className: className, onClick: this.props.handleClick },
+                { type: "button", className: className, onClick: this.props.onClick },
                 label
             );
         }
@@ -18556,24 +18556,16 @@ var ToolBar = function (_React$Component) {
     function ToolBar(props) {
         _classCallCheck(this, ToolBar);
 
-        var _this = _possibleConstructorReturn(this, (ToolBar.__proto__ || Object.getPrototypeOf(ToolBar)).call(this, props));
-
-        _this.handleChange = _this._handleChange.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (ToolBar.__proto__ || Object.getPrototypeOf(ToolBar)).call(this, props));
     }
 
     _createClass(ToolBar, [{
-        key: "_handleChange",
-        value: function _handleChange(taskName) {
-            this.props.handleSearch(taskName);
-        }
-    }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
                 "div",
                 { style: { padding: "5px" } },
-                _react2.default.createElement(_TextBox2.default, { handleChange: this.handleChange, className: "task-search", placeholder: "Search Task" })
+                _react2.default.createElement(_TextBox2.default, { className: "task-search", placeholder: "Search Task", onChange: this.props.handleSearch })
             );
         }
     }]);
@@ -18611,22 +18603,29 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var TextBox = function (_React$Component) {
     _inherits(TextBox, _React$Component);
 
-    function TextBox() {
+    function TextBox(props) {
         _classCallCheck(this, TextBox);
 
-        return _possibleConstructorReturn(this, (TextBox.__proto__ || Object.getPrototypeOf(TextBox)).apply(this, arguments));
+        debugger;
+
+        var _this = _possibleConstructorReturn(this, (TextBox.__proto__ || Object.getPrototypeOf(TextBox)).call(this, props));
+
+        _this.onChange = _this._onChange.bind(_this);
+        return _this;
     }
 
     _createClass(TextBox, [{
+        key: "_onChange",
+        value: function _onChange(evt) {
+            debugger;
+            this.props.onChange(evt.target.value, evt);
+        }
+    }, {
         key: "render",
         value: function render() {
             var className = this.props.className;
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement("input", { type: "text", className: className, style: this.props.style, placeholder: this.props.placeholder,
-                    onChange: this.props.handleChange })
-            );
+            return _react2.default.createElement("input", { type: "text", className: className, style: this.props.style, placeholder: this.props.placeholder,
+                onChange: this.onChange });
         }
     }]);
 

@@ -5,7 +5,7 @@ class Button extends React.Component {
         var label = this.props.label;
         var className = this.props.className;
         return (
-            <button type="button" className={className} onClick={this.props.handleClick}>{label}</button>
+            <button type="button" className={className} onClick={this.props.onClick}>{label}</button>
         );
     }
 }
