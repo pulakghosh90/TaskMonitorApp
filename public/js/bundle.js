@@ -18510,7 +18510,7 @@ var TaskMonitor = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 { className: "task-monitor" },
-                _react2.default.createElement(_ToolBar2.default, { handleSearch: this.handleSearch }),
+                _react2.default.createElement(_ToolBar2.default, { search: this.handleSearch }),
                 _react2.default.createElement(_TaskManager2.default, this.state)
             );
         }
@@ -18565,7 +18565,7 @@ var ToolBar = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 { style: { padding: "5px" } },
-                _react2.default.createElement(_TextBox2.default, { className: "task-search", placeholder: "Search Task", onChange: this.props.handleSearch })
+                _react2.default.createElement(_TextBox2.default, { className: "task-search", placeholder: "Search Task", onChange: this.props.search })
             );
         }
     }]);

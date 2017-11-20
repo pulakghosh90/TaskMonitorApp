@@ -8,7 +8,7 @@ class ToolBar extends React.Component {
     render() {
         return (
             <div style={{ padding: "5px" }}>
-                <TextBox className="task-search" placeholder="Search Task" onChange={this.props.handleSearch} />
+                <TextBox className="task-search" placeholder="Search Task" onChange={this.props.search} />
             </div>
         );
     }
