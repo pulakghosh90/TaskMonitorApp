@@ -1,12 +1,12 @@
-var React = require("react");
+import React from "react";
 
-var Label = React.createClass({
+class Label extends React.Component {
     render() {
         var value = this.props.value;
         return (
             <span className={this.props.className} style={this.props.style}>{value}</span>
         );
     }
-});
+}
 
-module.exports = Label;
+export default Label;

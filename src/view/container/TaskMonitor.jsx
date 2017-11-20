@@ -1,18 +1,20 @@
-var React = require("react");
-var ToolBar = require("./ToolBar.jsx");
-var TaskManager = require("./TaskManager.jsx");
+import React from "react";
+import ToolBar from "./ToolBar.jsx";
+import TaskManager from "./TaskManager.jsx";
 
-var TaskMonitor = React.createClass({
-    getInitialState() {
-        return {
+class TaskMonitor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             taskName: ""
         };
-    },
-    handleSearch(taskName) {
+        this.handleSearch = this._handleSearch.bind(this);
+    }
+    _handleSearch(taskName) {
         this.setState({
             taskName
         });
-    },
+    }
     render() {
         return (
             <div className="task-monitor">
@@ -21,6 +23,6 @@ var TaskMonitor = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = TaskMonitor;
+export default TaskMonitor;

@@ -1,30 +1,32 @@
-var React = require("react");
-var Button = require("../simple/Button.jsx");
-var TextArea = require("../simple/TextArea.jsx");
+import React from "react";
+import Button from "../simple/Button.jsx";
+import TextArea from "../simple/TextArea.jsx";
 
-var TaskEditor = React.createClass({
-    getInitialState() {
-        return {
+class TaskEditor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             taskName: this.props.taskName || "",
             focus: this.props.focus || true
         };
-    },
-    onChange(evt) {
+        this.onChange = this._onChange.bind(this);
+        this.onClose = this._onClose.bind(this);
+        this.onEdit = this._onEdit.bind(this);
+    }
+    _onChange(evt) {
         this.setState({
             taskName: evt.target.value
         });
-    },
-    onClose(evt) {
+    }
+    _onClose(evt) {
         this.props.onClose(evt);
-    },
-    onEdit(evt) {
+    }
+    _onEdit(evt) {
         this.props.onEdit(this.state.taskName, evt);
-    },
+    }
     render() {
         return (
             <div className="task-editor" style={this.props.style}>
-                {/* <textarea className="task-textarea" value={this.state.taskName} autoFocus={this.state.focus}
-                    onChange={this.onChange} /> */}
                 <TextArea className="task-textarea" value={this.state.taskName} focus={this.state.focus}
                     onChange={this.onChange} />
                 <Button label="Submit" className="task-btn" handleClick={this.onEdit} />
@@ -32,6 +34,6 @@ var TaskEditor = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = TaskEditor;
+export default TaskEditor;

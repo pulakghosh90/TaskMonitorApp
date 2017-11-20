@@ -1,10 +1,10 @@
-var React = require("react");
-var Label = require("../component/simple/Label.jsx");
-var TaskList = require("../component/complex/TaskList.jsx");
-var AddTask = require("../component/complex/AddTask.jsx");
-var Constant = require("../constant/Constant.js");
+import React from "react";
+import Label from "../component/simple/Label.jsx";
+import TaskList from "../component/complex/TaskList.jsx";
+import AddTask from "../component/complex/AddTask.jsx";
+import Constant from "../constant/Constant.js";
 
-var TaskBoard = React.createClass({
+class TaskBoard extends React.Component {
     render() {
         var status = Constant.getStatusLabel(this.props.status);
         return (
@@ -15,6 +15,6 @@ var TaskBoard = React.createClass({
             </div>
         );
     }
-});
+}
 
 module.exports = TaskBoard;

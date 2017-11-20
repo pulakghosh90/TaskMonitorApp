@@ -1,20 +1,23 @@
-var React = require("react");
-var Button = require("../simple/Button.jsx");
-var TaskEditor = require("./TaskEditor.jsx");
+import React from "react";
+import Button from "../simple/Button.jsx";
+import TaskEditor from "./TaskEditor.jsx";
 
-var AddTask = React.createClass({
-    getInitialState() {
-        return {
+class AddTask extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             edit: false
         };
-    },
-    toggleEditor(evt) {
+        this.toggleEditor = this._toggleEditor.bind(this);
+        this.add = this._add.bind(this);
+        this.close = this._close.bind(this);
+    }
+    _toggleEditor(evt) {
         this.setState({
             edit: !this.state.edit
         });
-    },
-    add(name) {
-        debugger;
+    }
+    _add(name) {
         if (name) {
             this.props.addTask(
                 {
@@ -24,10 +27,10 @@ var AddTask = React.createClass({
             );
         }
         this.toggleEditor();
-    },
-    close() {
+    }
+    _close() {
         this.toggleEditor();
-    },
+    }
     render() {
         return (
             <div>
@@ -36,6 +39,6 @@ var AddTask = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = AddTask;
+export default AddTask;

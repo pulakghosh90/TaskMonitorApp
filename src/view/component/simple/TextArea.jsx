@@ -1,12 +1,12 @@
-var React = require("react");
+import React from "react";
 
-var TextArea = React.createClass({
+class TextArea extends React.Component {
     render() {
         return (
             <textarea className={this.props.className} autoFocus={this.props.focus} value={this.props.value}
                 onChange={this.props.onChange} />
         );
     }
-});
+}
 
-module.exports = TextArea;
+export default TextArea;

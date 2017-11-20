@@ -1,40 +1,46 @@
-var React = require("react");
-var Label = require("../simple/Label.jsx");
-var Icon = require("../simple/Icon.jsx");
-var TaskEditor = require("./TaskEditor.jsx");
+import React from "react";
+import Label from "../simple/Label.jsx";
+import Icon from "../simple/Icon.jsx";
+import TaskEditor from "./TaskEditor.jsx";
 
-var Task = React.createClass({
-    getInitialState() {
-        return {
+class Task extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             className: "fa fa-pencil task-edit",
             edit: false,
             task: this.props.task || {}
         };
-    },
-    onMouseOver() {
+        this.onMouseOver = this._onMouseOver.bind(this);
+        this.onMouseOut = this._onMouseOut.bind(this);
+        this.toggleEditor = this._toggleEditor.bind(this);
+        this.editTask = this._editTask.bind(this);
+        this.onClose = this._onClose.bind(this);
+    }
+    _onMouseOver() {
         this.setState({
             className: "fa fa-pencil task-edit task-edit-operation"
         });
-    },
-    onMouseOut() {
+    }
+    _onMouseOut() {
         this.setState({
             className: "fa fa-pencil task-edit"
         });
-    },
-    toggleEditor() {
+    }
+    _toggleEditor() {
         this.setState({
             edit: !this.state.edit
         });
-    },
-    editTask(taskName) {
+    }
+    _editTask(taskName) {
         var task = this.state.task;
         task.name = taskName;
         this.props.editTask(task);
         this.toggleEditor();
-    },
-    onClose() {
+    }
+    _onClose() {
         this.toggleEditor();
-    },
+    }
     render() {
         debugger;
         var task = this.state.task;
@@ -56,6 +62,6 @@ var Task = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = Task;
+export default Task;

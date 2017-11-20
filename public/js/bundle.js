@@ -49,14 +49,24 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var ReactDOM = __webpack_require__(/*! react-dom */ 37);
-	var TaskMonitor = __webpack_require__(/*! ../view/container/TaskMonitor.jsx */ 184);
+	var _react = __webpack_require__(/*! react */ 1);
 	
-	ReactDOM.render(React.createElement(
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 37);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _TaskMonitor = __webpack_require__(/*! ../view/container/TaskMonitor.jsx */ 184);
+	
+	var _TaskMonitor2 = _interopRequireDefault(_TaskMonitor);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	_reactDom2.default.render(_react2.default.createElement(
 	    "div",
 	    { className: "app-center" },
-	    React.createElement(TaskMonitor, null)
+	    _react2.default.createElement(_TaskMonitor2.default, null)
 	), document.getElementById("app"));
 
 /***/ }),
@@ -22428,33 +22438,70 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var ToolBar = __webpack_require__(/*! ./ToolBar.jsx */ 185);
-	var TaskManager = __webpack_require__(/*! ./TaskManager.jsx */ 187);
-	
-	var TaskMonitor = React.createClass({
-	    displayName: "TaskMonitor",
-	    getInitialState: function getInitialState() {
-	        return {
-	            taskName: ""
-	        };
-	    },
-	    handleSearch: function handleSearch(taskName) {
-	        this.setState({
-	            taskName: taskName
-	        });
-	    },
-	    render: function render() {
-	        return React.createElement(
-	            "div",
-	            { className: "task-monitor" },
-	            React.createElement(ToolBar, { handleSearch: this.handleSearch }),
-	            React.createElement(TaskManager, this.state)
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = TaskMonitor;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _ToolBar = __webpack_require__(/*! ./ToolBar.jsx */ 185);
+	
+	var _ToolBar2 = _interopRequireDefault(_ToolBar);
+	
+	var _TaskManager = __webpack_require__(/*! ./TaskManager.jsx */ 187);
+	
+	var _TaskManager2 = _interopRequireDefault(_TaskManager);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TaskMonitor = function (_React$Component) {
+	    _inherits(TaskMonitor, _React$Component);
+	
+	    function TaskMonitor(props) {
+	        _classCallCheck(this, TaskMonitor);
+	
+	        var _this = _possibleConstructorReturn(this, (TaskMonitor.__proto__ || Object.getPrototypeOf(TaskMonitor)).call(this, props));
+	
+	        _this.state = {
+	            taskName: ""
+	        };
+	        _this.handleSearch = _this._handleSearch.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(TaskMonitor, [{
+	        key: "_handleSearch",
+	        value: function _handleSearch(taskName) {
+	            this.setState({
+	                taskName: taskName
+	            });
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "task-monitor" },
+	                _react2.default.createElement(_ToolBar2.default, { handleSearch: this.handleSearch }),
+	                _react2.default.createElement(_TaskManager2.default, this.state)
+	            );
+	        }
+	    }]);
+	
+	    return TaskMonitor;
+	}(_react2.default.Component);
+	
+	exports.default = TaskMonitor;
 
 /***/ }),
 /* 185 */
@@ -22465,24 +22512,60 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var TextBox = __webpack_require__(/*! ../component/simple/TextBox.jsx */ 186);
-	
-	var ToolBar = React.createClass({
-	    displayName: "ToolBar",
-	    handleChange: function handleChange(taskName) {
-	        this.props.handleSearch(taskName);
-	    },
-	    render: function render() {
-	        return React.createElement(
-	            "div",
-	            { style: { padding: "5px" } },
-	            React.createElement(TextBox, { handleChange: this.handleChange, className: "task-search", placeholder: "Search Task" })
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = ToolBar;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _TextBox = __webpack_require__(/*! ../component/simple/TextBox.jsx */ 186);
+	
+	var _TextBox2 = _interopRequireDefault(_TextBox);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ToolBar = function (_React$Component) {
+	    _inherits(ToolBar, _React$Component);
+	
+	    function ToolBar(props) {
+	        _classCallCheck(this, ToolBar);
+	
+	        var _this = _possibleConstructorReturn(this, (ToolBar.__proto__ || Object.getPrototypeOf(ToolBar)).call(this, props));
+	
+	        _this.handleChange = _this._handleChange.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(ToolBar, [{
+	        key: "_handleChange",
+	        value: function _handleChange(taskName) {
+	            this.props.handleSearch(taskName);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { style: { padding: "5px" } },
+	                _react2.default.createElement(_TextBox2.default, { handleChange: this.handleChange, className: "task-search", placeholder: "Search Task" })
+	            );
+	        }
+	    }]);
+	
+	    return ToolBar;
+	}(_react2.default.Component);
+	
+	exports.default = ToolBar;
 
 /***/ }),
 /* 186 */
@@ -22493,22 +22576,50 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	
-	var TextBox = React.createClass({
-	    displayName: "TextBox",
-	    render: function render() {
-	        var className = this.props.className;
-	        return React.createElement(
-	            "div",
-	            null,
-	            React.createElement("input", { type: "text", className: className, style: this.props.style, placeholder: this.props.placeholder,
-	                onChange: this.props.handleChange })
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = TextBox;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TextBox = function (_React$Component) {
+	    _inherits(TextBox, _React$Component);
+	
+	    function TextBox() {
+	        _classCallCheck(this, TextBox);
+	
+	        return _possibleConstructorReturn(this, (TextBox.__proto__ || Object.getPrototypeOf(TextBox)).apply(this, arguments));
+	    }
+	
+	    _createClass(TextBox, [{
+	        key: "render",
+	        value: function render() {
+	            var className = this.props.className;
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: className, style: this.props.style, placeholder: this.props.placeholder,
+	                    onChange: this.props.handleChange })
+	            );
+	        }
+	    }]);
+	
+	    return TextBox;
+	}(_react2.default.Component);
+	
+	exports.default = TextBox;
 
 /***/ }),
 /* 187 */
@@ -22519,44 +22630,90 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var TaskBoard = __webpack_require__(/*! ./TaskBoard.jsx */ 188);
-	var TaskService = __webpack_require__(/*! ../../service/TaskService.js */ 198);
-	var TaskUtil = __webpack_require__(/*! ../../util/TaskUtil.js */ 199);
-	
-	var TaskManager = React.createClass({
-	    displayName: "TaskManager",
-	    getInitialState: function getInitialState() {
-	        return {};
-	    },
-	    updateTask: function updateTask(task) {
-	        TaskService.updateTask(task);
-	        this.refreshBoards();
-	    },
-	    addTask: function addTask(task) {
-	        TaskService.addTask(task);
-	        this.refreshBoards();
-	    },
-	    refreshBoards: function refreshBoards() {
-	        this.setState({});
-	    },
-	    render: function render() {
-	        var _this = this;
-	
-	        var tasks = TaskService.fetchTasks(this.props.taskName) || [];
-	        var taskObj = TaskUtil.splitTaskByStatus(tasks);
-	        var TaskBoards = Object.keys(taskObj).map(function (key) {
-	            return React.createElement(TaskBoard, { key: key, status: key, tasks: taskObj[key], updateTask: _this.updateTask, addTask: _this.addTask });
-	        });
-	        return React.createElement(
-	            "div",
-	            null,
-	            TaskBoards
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = TaskManager;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _TaskBoard = __webpack_require__(/*! ./TaskBoard.jsx */ 188);
+	
+	var _TaskBoard2 = _interopRequireDefault(_TaskBoard);
+	
+	var _TaskService = __webpack_require__(/*! ../../service/TaskService.js */ 198);
+	
+	var _TaskService2 = _interopRequireDefault(_TaskService);
+	
+	var _TaskUtil = __webpack_require__(/*! ../../util/TaskUtil.js */ 199);
+	
+	var _TaskUtil2 = _interopRequireDefault(_TaskUtil);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TaskManager = function (_React$Component) {
+	    _inherits(TaskManager, _React$Component);
+	
+	    function TaskManager(props) {
+	        _classCallCheck(this, TaskManager);
+	
+	        var _this = _possibleConstructorReturn(this, (TaskManager.__proto__ || Object.getPrototypeOf(TaskManager)).call(this, props));
+	
+	        _this.state = {};
+	        _this.updateTask = _this._updateTask.bind(_this);
+	        _this.addTask = _this._addTask.bind(_this);
+	        _this.refreshBoards = _this._refreshBoards.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(TaskManager, [{
+	        key: "_updateTask",
+	        value: function _updateTask(task) {
+	            _TaskService2.default.updateTask(task);
+	            this.refreshBoards();
+	        }
+	    }, {
+	        key: "_addTask",
+	        value: function _addTask(task) {
+	            _TaskService2.default.addTask(task);
+	            this.refreshBoards();
+	        }
+	    }, {
+	        key: "_refreshBoards",
+	        value: function _refreshBoards() {
+	            this.setState({});
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var tasks = _TaskService2.default.fetchTasks(this.props.taskName) || [];
+	            var taskObj = _TaskUtil2.default.splitTaskByStatus(tasks);
+	            var TaskBoards = Object.keys(taskObj).map(function (key) {
+	                return _react2.default.createElement(_TaskBoard2.default, { key: key, status: key, tasks: taskObj[key], updateTask: _this2.updateTask, addTask: _this2.addTask });
+	            });
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                TaskBoards
+	            );
+	        }
+	    }]);
+	
+	    return TaskManager;
+	}(_react2.default.Component);
+	
+	exports.default = TaskManager;
 
 /***/ }),
 /* 188 */
@@ -22567,25 +22724,61 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var Label = __webpack_require__(/*! ../component/simple/Label.jsx */ 189);
-	var TaskList = __webpack_require__(/*! ../component/complex/TaskList.jsx */ 190);
-	var AddTask = __webpack_require__(/*! ../component/complex/AddTask.jsx */ 196);
-	var Constant = __webpack_require__(/*! ../constant/Constant.js */ 197);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var TaskBoard = React.createClass({
-	    displayName: "TaskBoard",
-	    render: function render() {
-	        var status = Constant.getStatusLabel(this.props.status);
-	        return React.createElement(
-	            "div",
-	            { className: "task-board" },
-	            React.createElement(Label, { value: status, className: "task-status" }),
-	            React.createElement(TaskList, { boardType: this.props.status, tasks: this.props.tasks, editTask: this.props.updateTask }),
-	            React.createElement(AddTask, { boardType: this.props.status, addTask: this.props.addTask })
-	        );
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Label = __webpack_require__(/*! ../component/simple/Label.jsx */ 189);
+	
+	var _Label2 = _interopRequireDefault(_Label);
+	
+	var _TaskList = __webpack_require__(/*! ../component/complex/TaskList.jsx */ 190);
+	
+	var _TaskList2 = _interopRequireDefault(_TaskList);
+	
+	var _AddTask = __webpack_require__(/*! ../component/complex/AddTask.jsx */ 196);
+	
+	var _AddTask2 = _interopRequireDefault(_AddTask);
+	
+	var _Constant = __webpack_require__(/*! ../constant/Constant.js */ 197);
+	
+	var _Constant2 = _interopRequireDefault(_Constant);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TaskBoard = function (_React$Component) {
+	    _inherits(TaskBoard, _React$Component);
+	
+	    function TaskBoard() {
+	        _classCallCheck(this, TaskBoard);
+	
+	        return _possibleConstructorReturn(this, (TaskBoard.__proto__ || Object.getPrototypeOf(TaskBoard)).apply(this, arguments));
 	    }
-	});
+	
+	    _createClass(TaskBoard, [{
+	        key: "render",
+	        value: function render() {
+	            var status = _Constant2.default.getStatusLabel(this.props.status);
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "task-board" },
+	                _react2.default.createElement(_Label2.default, { value: status, className: "task-status" }),
+	                _react2.default.createElement(_TaskList2.default, { boardType: this.props.status, tasks: this.props.tasks, editTask: this.props.updateTask }),
+	                _react2.default.createElement(_AddTask2.default, { boardType: this.props.status, addTask: this.props.addTask })
+	            );
+	        }
+	    }]);
+	
+	    return TaskBoard;
+	}(_react2.default.Component);
 	
 	module.exports = TaskBoard;
 
@@ -22598,21 +22791,49 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	
-	var Label = React.createClass({
-	    displayName: "Label",
-	    render: function render() {
-	        var value = this.props.value;
-	        return React.createElement(
-	            "span",
-	            { className: this.props.className, style: this.props.style },
-	            value
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = Label;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Label = function (_React$Component) {
+	    _inherits(Label, _React$Component);
+	
+	    function Label() {
+	        _classCallCheck(this, Label);
+	
+	        return _possibleConstructorReturn(this, (Label.__proto__ || Object.getPrototypeOf(Label)).apply(this, arguments));
+	    }
+	
+	    _createClass(Label, [{
+	        key: "render",
+	        value: function render() {
+	            var value = this.props.value;
+	            return _react2.default.createElement(
+	                "span",
+	                { className: this.props.className, style: this.props.style },
+	                value
+	            );
+	        }
+	    }]);
+	
+	    return Label;
+	}(_react2.default.Component);
+	
+	exports.default = Label;
 
 /***/ }),
 /* 190 */
@@ -22623,27 +22844,58 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var Task = __webpack_require__(/*! ./Task.jsx */ 191);
-	
-	var TaskList = React.createClass({
-	    displayName: "TaskList",
-	    render: function render() {
-	        var _this = this;
-	
-	        var tasks = this.props.tasks || [];
-	        var TaskComponents = tasks.map(function (task) {
-	            return React.createElement(Task, { key: task.id, task: task, editTask: _this.props.editTask });
-	        });
-	        return React.createElement(
-	            "div",
-	            { style: { margin: "5px" } },
-	            TaskComponents
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = TaskList;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Task = __webpack_require__(/*! ./Task.jsx */ 191);
+	
+	var _Task2 = _interopRequireDefault(_Task);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TaskList = function (_React$Component) {
+	    _inherits(TaskList, _React$Component);
+	
+	    function TaskList() {
+	        _classCallCheck(this, TaskList);
+	
+	        return _possibleConstructorReturn(this, (TaskList.__proto__ || Object.getPrototypeOf(TaskList)).apply(this, arguments));
+	    }
+	
+	    _createClass(TaskList, [{
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var tasks = this.props.tasks || [];
+	            var TaskComponents = tasks.map(function (task) {
+	                return _react2.default.createElement(_Task2.default, { key: task.id, task: task, editTask: _this2.props.editTask });
+	            });
+	            return _react2.default.createElement(
+	                "div",
+	                { style: { margin: "5px" } },
+	                TaskComponents
+	            );
+	        }
+	    }]);
+	
+	    return TaskList;
+	}(_react2.default.Component);
+	
+	exports.default = TaskList;
 
 /***/ }),
 /* 191 */
@@ -22654,64 +22906,116 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var Label = __webpack_require__(/*! ../simple/Label.jsx */ 189);
-	var Icon = __webpack_require__(/*! ../simple/Icon.jsx */ 192);
-	var TaskEditor = __webpack_require__(/*! ./TaskEditor.jsx */ 193);
-	
-	var Task = React.createClass({
-	    displayName: "Task",
-	    getInitialState: function getInitialState() {
-	        return {
-	            className: "fa fa-pencil task-edit",
-	            edit: false,
-	            task: this.props.task || {}
-	        };
-	    },
-	    onMouseOver: function onMouseOver() {
-	        this.setState({
-	            className: "fa fa-pencil task-edit task-edit-operation"
-	        });
-	    },
-	    onMouseOut: function onMouseOut() {
-	        this.setState({
-	            className: "fa fa-pencil task-edit"
-	        });
-	    },
-	    toggleEditor: function toggleEditor() {
-	        this.setState({
-	            edit: !this.state.edit
-	        });
-	    },
-	    editTask: function editTask(taskName) {
-	        var task = this.state.task;
-	        task.name = taskName;
-	        this.props.editTask(task);
-	        this.toggleEditor();
-	    },
-	    onClose: function onClose() {
-	        this.toggleEditor();
-	    },
-	    render: function render() {
-	        debugger;
-	        var task = this.state.task;
-	        var className = "task list-card list-card-title active-card";
-	        return React.createElement(
-	            "div",
-	            null,
-	            !this.state.edit && React.createElement(
-	                "div",
-	                { className: className, onMouseOver: this.onMouseOver, onMouseOut: this.onMouseOut,
-	                    onClick: this.toggleEditor },
-	                React.createElement(Label, { value: task.name, style: { paddingLeft: "5px" } }),
-	                React.createElement(Icon, { className: this.state.className })
-	            ),
-	            this.state.edit && React.createElement(TaskEditor, { style: { margin: "0px" }, taskName: task.name, onEdit: this.editTask, onClose: this.onClose })
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = Task;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Label = __webpack_require__(/*! ../simple/Label.jsx */ 189);
+	
+	var _Label2 = _interopRequireDefault(_Label);
+	
+	var _Icon = __webpack_require__(/*! ../simple/Icon.jsx */ 192);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
+	var _TaskEditor = __webpack_require__(/*! ./TaskEditor.jsx */ 193);
+	
+	var _TaskEditor2 = _interopRequireDefault(_TaskEditor);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Task = function (_React$Component) {
+	    _inherits(Task, _React$Component);
+	
+	    function Task(props) {
+	        _classCallCheck(this, Task);
+	
+	        var _this = _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this, props));
+	
+	        _this.state = {
+	            className: "fa fa-pencil task-edit",
+	            edit: false,
+	            task: _this.props.task || {}
+	        };
+	        _this.onMouseOver = _this._onMouseOver.bind(_this);
+	        _this.onMouseOut = _this._onMouseOut.bind(_this);
+	        _this.toggleEditor = _this._toggleEditor.bind(_this);
+	        _this.editTask = _this._editTask.bind(_this);
+	        _this.onClose = _this._onClose.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(Task, [{
+	        key: "_onMouseOver",
+	        value: function _onMouseOver() {
+	            this.setState({
+	                className: "fa fa-pencil task-edit task-edit-operation"
+	            });
+	        }
+	    }, {
+	        key: "_onMouseOut",
+	        value: function _onMouseOut() {
+	            this.setState({
+	                className: "fa fa-pencil task-edit"
+	            });
+	        }
+	    }, {
+	        key: "_toggleEditor",
+	        value: function _toggleEditor() {
+	            this.setState({
+	                edit: !this.state.edit
+	            });
+	        }
+	    }, {
+	        key: "_editTask",
+	        value: function _editTask(taskName) {
+	            var task = this.state.task;
+	            task.name = taskName;
+	            this.props.editTask(task);
+	            this.toggleEditor();
+	        }
+	    }, {
+	        key: "_onClose",
+	        value: function _onClose() {
+	            this.toggleEditor();
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            debugger;
+	            var task = this.state.task;
+	            var className = "task list-card list-card-title active-card";
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                !this.state.edit && _react2.default.createElement(
+	                    "div",
+	                    { className: className, onMouseOver: this.onMouseOver, onMouseOut: this.onMouseOut,
+	                        onClick: this.toggleEditor },
+	                    _react2.default.createElement(_Label2.default, { value: task.name, style: { paddingLeft: "5px" } }),
+	                    _react2.default.createElement(_Icon2.default, { className: this.state.className })
+	                ),
+	                this.state.edit && _react2.default.createElement(_TaskEditor2.default, { style: { margin: "0px" }, taskName: task.name, onEdit: this.editTask, onClose: this.onClose })
+	            );
+	        }
+	    }]);
+	
+	    return Task;
+	}(_react2.default.Component);
+	
+	exports.default = Task;
 
 /***/ }),
 /* 192 */
@@ -22722,16 +23026,44 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	
-	var Icon = React.createClass({
-	    displayName: "Icon",
-	    render: function render() {
-	        return React.createElement("span", { className: this.props.className, style: this.props.style, onClick: this.props.onClick });
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = Icon;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Icon = function (_React$Component) {
+	    _inherits(Icon, _React$Component);
+	
+	    function Icon() {
+	        _classCallCheck(this, Icon);
+	
+	        return _possibleConstructorReturn(this, (Icon.__proto__ || Object.getPrototypeOf(Icon)).apply(this, arguments));
+	    }
+	
+	    _createClass(Icon, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement("span", { className: this.props.className, style: this.props.style, onClick: this.props.onClick });
+	        }
+	    }]);
+	
+	    return Icon;
+	}(_react2.default.Component);
+	
+	exports.default = Icon;
 
 /***/ }),
 /* 193 */
@@ -22742,42 +23074,85 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var Button = __webpack_require__(/*! ../simple/Button.jsx */ 194);
-	var TextArea = __webpack_require__(/*! ../simple/TextArea.jsx */ 195);
-	
-	var TaskEditor = React.createClass({
-	    displayName: "TaskEditor",
-	    getInitialState: function getInitialState() {
-	        return {
-	            taskName: this.props.taskName || "",
-	            focus: this.props.focus || true
-	        };
-	    },
-	    onChange: function onChange(evt) {
-	        this.setState({
-	            taskName: evt.target.value
-	        });
-	    },
-	    onClose: function onClose(evt) {
-	        this.props.onClose(evt);
-	    },
-	    onEdit: function onEdit(evt) {
-	        this.props.onEdit(this.state.taskName, evt);
-	    },
-	    render: function render() {
-	        return React.createElement(
-	            "div",
-	            { className: "task-editor", style: this.props.style },
-	            React.createElement(TextArea, { className: "task-textarea", value: this.state.taskName, focus: this.state.focus,
-	                onChange: this.onChange }),
-	            React.createElement(Button, { label: "Submit", className: "task-btn", handleClick: this.onEdit }),
-	            React.createElement(Button, { label: "Close", className: "task-btn", handleClick: this.onClose })
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = TaskEditor;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Button = __webpack_require__(/*! ../simple/Button.jsx */ 194);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	var _TextArea = __webpack_require__(/*! ../simple/TextArea.jsx */ 195);
+	
+	var _TextArea2 = _interopRequireDefault(_TextArea);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TaskEditor = function (_React$Component) {
+	    _inherits(TaskEditor, _React$Component);
+	
+	    function TaskEditor(props) {
+	        _classCallCheck(this, TaskEditor);
+	
+	        var _this = _possibleConstructorReturn(this, (TaskEditor.__proto__ || Object.getPrototypeOf(TaskEditor)).call(this, props));
+	
+	        _this.state = {
+	            taskName: _this.props.taskName || "",
+	            focus: _this.props.focus || true
+	        };
+	        _this.onChange = _this._onChange.bind(_this);
+	        _this.onClose = _this._onClose.bind(_this);
+	        _this.onEdit = _this._onEdit.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(TaskEditor, [{
+	        key: "_onChange",
+	        value: function _onChange(evt) {
+	            this.setState({
+	                taskName: evt.target.value
+	            });
+	        }
+	    }, {
+	        key: "_onClose",
+	        value: function _onClose(evt) {
+	            this.props.onClose(evt);
+	        }
+	    }, {
+	        key: "_onEdit",
+	        value: function _onEdit(evt) {
+	            this.props.onEdit(this.state.taskName, evt);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "task-editor", style: this.props.style },
+	                _react2.default.createElement(_TextArea2.default, { className: "task-textarea", value: this.state.taskName, focus: this.state.focus,
+	                    onChange: this.onChange }),
+	                _react2.default.createElement(_Button2.default, { label: "Submit", className: "task-btn", handleClick: this.onEdit }),
+	                _react2.default.createElement(_Button2.default, { label: "Close", className: "task-btn", handleClick: this.onClose })
+	            );
+	        }
+	    }]);
+	
+	    return TaskEditor;
+	}(_react2.default.Component);
+	
+	exports.default = TaskEditor;
 
 /***/ }),
 /* 194 */
@@ -22788,25 +23163,50 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	
-	var Button = React.createClass({
-	    displayName: "Button",
-	    onClick: function onClick(evt) {
-	        this.props.handleClick(evt);
-	    },
-	    render: function render() {
-	        var label = this.props.label;
-	        var className = this.props.className;
-	        return React.createElement(
-	            "button",
-	            { type: "button", className: className, onClick: this.onClick },
-	            label
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = Button;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Button = function (_React$Component) {
+	    _inherits(Button, _React$Component);
+	
+	    function Button() {
+	        _classCallCheck(this, Button);
+	
+	        return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+	    }
+	
+	    _createClass(Button, [{
+	        key: "render",
+	        value: function render() {
+	            var label = this.props.label;
+	            var className = this.props.className;
+	            return _react2.default.createElement(
+	                "button",
+	                { type: "button", className: className, onClick: this.props.handleClick },
+	                label
+	            );
+	        }
+	    }]);
+	
+	    return Button;
+	}(_react2.default.Component);
+	
+	exports.default = Button;
 
 /***/ }),
 /* 195 */
@@ -22817,17 +23217,45 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	
-	var TextArea = React.createClass({
-	    displayName: "TextArea",
-	    render: function render() {
-	        return React.createElement("textarea", { className: this.props.className, autoFocus: this.props.focus, value: this.props.value,
-	            onChange: this.props.onChange });
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = TextArea;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TextArea = function (_React$Component) {
+	    _inherits(TextArea, _React$Component);
+	
+	    function TextArea() {
+	        _classCallCheck(this, TextArea);
+	
+	        return _possibleConstructorReturn(this, (TextArea.__proto__ || Object.getPrototypeOf(TextArea)).apply(this, arguments));
+	    }
+	
+	    _createClass(TextArea, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement("textarea", { className: this.props.className, autoFocus: this.props.focus, value: this.props.value,
+	                onChange: this.props.onChange });
+	        }
+	    }]);
+	
+	    return TextArea;
+	}(_react2.default.Component);
+	
+	exports.default = TextArea;
 
 /***/ }),
 /* 196 */
@@ -22838,46 +23266,88 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(/*! react */ 1);
-	var Button = __webpack_require__(/*! ../simple/Button.jsx */ 194);
-	var TaskEditor = __webpack_require__(/*! ./TaskEditor.jsx */ 193);
-	
-	var AddTask = React.createClass({
-	    displayName: "AddTask",
-	    getInitialState: function getInitialState() {
-	        return {
-	            edit: false
-	        };
-	    },
-	    toggleEditor: function toggleEditor(evt) {
-	        this.setState({
-	            edit: !this.state.edit
-	        });
-	    },
-	    add: function add(name) {
-	        debugger;
-	        if (name) {
-	            this.props.addTask({
-	                name: name,
-	                status: this.props.boardType
-	            });
-	        }
-	        this.toggleEditor();
-	    },
-	    close: function close() {
-	        this.toggleEditor();
-	    },
-	    render: function render() {
-	        return React.createElement(
-	            "div",
-	            null,
-	            !this.state.edit && React.createElement(Button, { label: "Add a Task...", className: "task-btn", handleClick: this.toggleEditor }),
-	            this.state.edit && React.createElement(TaskEditor, { onClose: this.close, onEdit: this.add })
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = AddTask;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Button = __webpack_require__(/*! ../simple/Button.jsx */ 194);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	var _TaskEditor = __webpack_require__(/*! ./TaskEditor.jsx */ 193);
+	
+	var _TaskEditor2 = _interopRequireDefault(_TaskEditor);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AddTask = function (_React$Component) {
+	    _inherits(AddTask, _React$Component);
+	
+	    function AddTask(props) {
+	        _classCallCheck(this, AddTask);
+	
+	        var _this = _possibleConstructorReturn(this, (AddTask.__proto__ || Object.getPrototypeOf(AddTask)).call(this, props));
+	
+	        _this.state = {
+	            edit: false
+	        };
+	        _this.toggleEditor = _this._toggleEditor.bind(_this);
+	        _this.add = _this._add.bind(_this);
+	        _this.close = _this._close.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(AddTask, [{
+	        key: "_toggleEditor",
+	        value: function _toggleEditor(evt) {
+	            this.setState({
+	                edit: !this.state.edit
+	            });
+	        }
+	    }, {
+	        key: "_add",
+	        value: function _add(name) {
+	            if (name) {
+	                this.props.addTask({
+	                    name: name,
+	                    status: this.props.boardType
+	                });
+	            }
+	            this.toggleEditor();
+	        }
+	    }, {
+	        key: "_close",
+	        value: function _close() {
+	            this.toggleEditor();
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                !this.state.edit && _react2.default.createElement(_Button2.default, { label: "Add a Task...", className: "task-btn", handleClick: this.toggleEditor }),
+	                this.state.edit && _react2.default.createElement(_TaskEditor2.default, { onClose: this.close, onEdit: this.add })
+	            );
+	        }
+	    }]);
+	
+	    return AddTask;
+	}(_react2.default.Component);
+	
+	exports.default = AddTask;
 
 /***/ }),
 /* 197 */
@@ -22911,35 +23381,58 @@
 
 	"use strict";
 	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
 	var tasks = [{ id: 1, name: "Eating Lunch", status: "doing" }, { id: 2, name: "Eating Lunch", status: "doing" }, { id: 3, name: "Ate Breakfast", status: "done" }, { id: 4, name: "Ate Breakfast", status: "done" }, { id: 5, name: "Eat Dinner", status: "todo" }];
 	
-	var TaskService = {
-	    fetchTasks: function fetchTasks(taskName) {
-	        if (taskName) return this.search(taskName);
-	        return tasks;
-	    },
-	    search: function search(name) {
-	        return tasks.filter(function (t) {
-	            return t.name.toLowerCase().startsWith(name.toLowerCase());
-	        });
-	    },
-	    addTask: function addTask(task) {
-	        tasks.push({
-	            id: tasks.length + 1,
-	            name: task.name,
-	            status: task.status
-	        });
-	    },
-	    updateTask: function updateTask(newTask) {
-	        var oldTask = tasks.filter(function (t) {
-	            return t.id == newTask.id;
-	        })[0];
-	        oldTask.name = newTask.name;
-	        oldTask.status = newTask.status;
+	var TaskService = function () {
+	    function TaskService() {
+	        _classCallCheck(this, TaskService);
 	    }
-	};
 	
-	module.exports = TaskService;
+	    _createClass(TaskService, [{
+	        key: "fetchTasks",
+	        value: function fetchTasks(taskName) {
+	            if (taskName) return this.search(taskName);
+	            return tasks;
+	        }
+	    }, {
+	        key: "search",
+	        value: function search(name) {
+	            return tasks.filter(function (t) {
+	                return t.name.toLowerCase().startsWith(name.toLowerCase());
+	            });
+	        }
+	    }, {
+	        key: "addTask",
+	        value: function addTask(task) {
+	            tasks.push({
+	                id: tasks.length + 1,
+	                name: task.name,
+	                status: task.status
+	            });
+	        }
+	    }, {
+	        key: "updateTask",
+	        value: function updateTask(newTask) {
+	            var oldTask = tasks.filter(function (t) {
+	                return t.id == newTask.id;
+	            })[0];
+	            oldTask.name = newTask.name;
+	            oldTask.status = newTask.status;
+	        }
+	    }]);
+	
+	    return TaskService;
+	}();
+	
+	exports.default = new TaskService();
 
 /***/ }),
 /* 199 */
@@ -22950,23 +23443,42 @@
 
 	"use strict";
 	
-	var TaskUtil = {
-	    splitTaskByStatus: function splitTaskByStatus(tasks) {
-	        return {
-	            todo: tasks.filter(function (t) {
-	                return t.status == "todo";
-	            }),
-	            doing: tasks.filter(function (t) {
-	                return t.status == "doing";
-	            }),
-	            done: tasks.filter(function (t) {
-	                return t.status == "done";
-	            })
-	        };
-	    }
-	};
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	
-	module.exports = TaskUtil;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var TaskUtil = function () {
+	    function TaskUtil() {
+	        _classCallCheck(this, TaskUtil);
+	    }
+	
+	    _createClass(TaskUtil, [{
+	        key: "splitTaskByStatus",
+	        value: function splitTaskByStatus(tasks) {
+	            return {
+	                todo: tasks.filter(function (t) {
+	                    return t.status == "todo";
+	                }),
+	                doing: tasks.filter(function (t) {
+	                    return t.status == "doing";
+	                }),
+	                done: tasks.filter(function (t) {
+	                    return t.status == "done";
+	                })
+	            };
+	        }
+	    }]);
+	
+	    return TaskUtil;
+	}();
+	
+	;
+	
+	exports.default = new TaskUtil();
 
 /***/ })
 /******/ ]);

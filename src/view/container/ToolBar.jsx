@@ -1,10 +1,14 @@
-var React = require("react");
-var TextBox = require("../component/simple/TextBox.jsx");
+import React from "react";
+import TextBox from "../component/simple/TextBox.jsx";
 
-var ToolBar = React.createClass({
-    handleChange(taskName) {
+class ToolBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = this._handleChange.bind(this);
+    }
+    _handleChange(taskName) {
         this.props.handleSearch(taskName);
-    },
+    }
     render() {
         return (
             <div style={{ padding: "5px" }}>
@@ -12,6 +16,6 @@ var ToolBar = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = ToolBar;
+export default ToolBar;

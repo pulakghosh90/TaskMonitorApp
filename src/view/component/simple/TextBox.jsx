@@ -1,6 +1,6 @@
-var React = require("react");
+import React from "react";
 
-var TextBox = React.createClass({
+class TextBox extends React.Component {
     render() {
         var className = this.props.className;
         return (
@@ -10,6 +10,6 @@ var TextBox = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = TextBox;
+export default TextBox;

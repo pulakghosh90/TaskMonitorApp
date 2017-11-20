@@ -1,7 +1,7 @@
-var React = require("react");
-var Task = require("./Task.jsx");
+import React from "react";
+import Task from "./Task.jsx";
 
-var TaskList = React.createClass({
+class TaskList extends React.Component {
     render() {
         var tasks = this.props.tasks || [];
         var TaskComponents = tasks.map(task => <Task key={task.id} task={task} editTask={this.props.editTask} />);
@@ -11,6 +11,6 @@ var TaskList = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = TaskList;
+export default TaskList;

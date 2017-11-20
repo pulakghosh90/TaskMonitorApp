@@ -1,23 +1,27 @@
-var React = require("react");
-var TaskBoard = require("./TaskBoard.jsx");
-var TaskService = require("../../service/TaskService.js");
-var TaskUtil = require("../../util/TaskUtil.js");
+import React from "react";
+import TaskBoard from "./TaskBoard.jsx";
+import TaskService from "../../service/TaskService.js";
+import TaskUtil from "../../util/TaskUtil.js";
 
-var TaskManager = React.createClass({
-    getInitialState() {
-        return {};
-    },
-    updateTask(task) {
+class TaskManager extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.updateTask = this._updateTask.bind(this);
+        this.addTask = this._addTask.bind(this);
+        this.refreshBoards = this._refreshBoards.bind(this);
+    }
+    _updateTask(task) {
         TaskService.updateTask(task);
         this.refreshBoards();
-    },
-    addTask(task) {
+    }
+    _addTask(task) {
         TaskService.addTask(task);
         this.refreshBoards();
-    },
-    refreshBoards() {
+    }
+    _refreshBoards() {
         this.setState({});
-    },
+    }
     render() {
         var tasks = TaskService.fetchTasks(this.props.taskName) || [];
         var taskObj = TaskUtil.splitTaskByStatus(tasks);
@@ -30,6 +34,6 @@ var TaskManager = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = TaskManager;
+export default TaskManager;

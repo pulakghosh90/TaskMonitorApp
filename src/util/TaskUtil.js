@@ -1,5 +1,5 @@
 
-var TaskUtil = {
+class TaskUtil {
     splitTaskByStatus(tasks) {
         return {
             todo: tasks.filter(t => t.status == "todo"),
@@ -9,4 +9,4 @@ var TaskUtil = {
     }
 };
 
-module.exports = TaskUtil;
+export default new TaskUtil();

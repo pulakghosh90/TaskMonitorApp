@@ -1,11 +1,11 @@
-var React = require("react");
+import React from "react";
 
-var Icon = React.createClass({
+class Icon extends React.Component {
     render() {
         return (
             <span className={this.props.className} style={this.props.style} onClick={this.props.onClick}></span>
         );
     }
-});
+}
 
-module.exports = Icon;
+export default Icon;
