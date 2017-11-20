@@ -18553,10 +18553,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ToolBar = function (_React$Component) {
     _inherits(ToolBar, _React$Component);
 
-    function ToolBar(props) {
+    function ToolBar() {
         _classCallCheck(this, ToolBar);
 
-        return _possibleConstructorReturn(this, (ToolBar.__proto__ || Object.getPrototypeOf(ToolBar)).call(this, props));
+        return _possibleConstructorReturn(this, (ToolBar.__proto__ || Object.getPrototypeOf(ToolBar)).apply(this, arguments));
     }
 
     _createClass(ToolBar, [{
