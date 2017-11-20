@@ -19144,7 +19144,7 @@ var AddTask = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 null,
-                !this.state.edit && _react2.default.createElement(_Button2.default, { label: "Add a Task...", className: "task-btn", handleClick: this.toggleEditor }),
+                !this.state.edit && _react2.default.createElement(_Button2.default, { label: "Add a Task...", className: "task-btn", onClick: this.toggleEditor }),
                 this.state.edit && _react2.default.createElement(_TaskEditor2.default, { onClose: this.close, onEdit: this.add })
             );
         }

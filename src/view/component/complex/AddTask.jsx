@@ -34,7 +34,7 @@ class AddTask extends React.Component {
     render() {
         return (
             <div>
-                {!this.state.edit && <Button label="Add a Task..." className="task-btn" handleClick={this.toggleEditor} />}
+                {!this.state.edit && <Button label="Add a Task..." className="task-btn" onClick={this.toggleEditor} />}
                 {this.state.edit && <TaskEditor onClose={this.close} onEdit={this.add} />}
             </div>
         );
