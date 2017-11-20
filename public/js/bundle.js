@@ -18656,13 +18656,13 @@ var _TaskBoard = __webpack_require__(34);
 
 var _TaskBoard2 = _interopRequireDefault(_TaskBoard);
 
-var _TaskService = __webpack_require__(41);
+var _TaskService2 = __webpack_require__(41);
 
-var _TaskService2 = _interopRequireDefault(_TaskService);
+var _TaskService3 = _interopRequireDefault(_TaskService2);
 
-var _TaskUtil = __webpack_require__(42);
+var _TaskUtil2 = __webpack_require__(42);
 
-var _TaskUtil2 = _interopRequireDefault(_TaskUtil);
+var _TaskUtil3 = _interopRequireDefault(_TaskUtil2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18671,6 +18671,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TaskService = new _TaskService3.default();
+var TaskUtil = new _TaskUtil3.default();
 
 var TaskManager = function (_React$Component) {
     _inherits(TaskManager, _React$Component);
@@ -18690,13 +18693,13 @@ var TaskManager = function (_React$Component) {
     _createClass(TaskManager, [{
         key: "_updateTask",
         value: function _updateTask(task) {
-            _TaskService2.default.updateTask(task);
+            TaskService.updateTask(task);
             this.refreshBoards();
         }
     }, {
         key: "_addTask",
         value: function _addTask(task) {
-            _TaskService2.default.addTask(task);
+            TaskService.addTask(task);
             this.refreshBoards();
         }
     }, {
@@ -18709,8 +18712,8 @@ var TaskManager = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var tasks = _TaskService2.default.fetchTasks(this.props.taskName) || [];
-            var taskObj = _TaskUtil2.default.splitTaskByStatus(tasks);
+            var tasks = TaskService.fetchTasks(this.props.taskName) || [];
+            var taskObj = TaskUtil.splitTaskByStatus(tasks);
             var TaskBoards = Object.keys(taskObj).map(function (key) {
                 return _react2.default.createElement(_TaskBoard2.default, { key: key, status: key, tasks: taskObj[key], updateTask: _this2.updateTask, addTask: _this2.addTask });
             });
@@ -19160,19 +19163,36 @@ exports.default = AddTask;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var C = {
     "done": "Done",
     "doing": "Doing",
     "todo": "To Do"
 };
 
-var Constant = {
-    getStatusLabel: function getStatusLabel(status) {
-        return C[status];
+var Constant = function () {
+    function Constant() {
+        _classCallCheck(this, Constant);
     }
-};
 
-module.exports = Constant;
+    _createClass(Constant, [{
+        key: "getStatusLabel",
+        value: function getStatusLabel(status) {
+            return C[status];
+        }
+    }]);
+
+    return Constant;
+}();
+
+exports.default = new Constant();
 
 /***/ }),
 /* 41 */
@@ -19232,7 +19252,7 @@ var TaskService = function () {
     return TaskService;
 }();
 
-exports.default = new TaskService();
+exports.default = TaskService;
 
 /***/ }),
 /* 42 */
@@ -19276,7 +19296,7 @@ var TaskUtil = function () {
 
 ;
 
-exports.default = new TaskUtil();
+exports.default = TaskUtil;
 
 /***/ })
 /******/ ]);

@@ -1,7 +1,10 @@
 import React from "react";
 import TaskBoard from "./TaskBoard.jsx";
-import TaskService from "../../service/TaskService.js";
-import TaskUtil from "../../util/TaskUtil.js";
+import _TaskService from "../../service/TaskService.js";
+import _TaskUtil from "../../util/TaskUtil.js";
+
+var TaskService = new _TaskService();
+var TaskUtil = new _TaskUtil();
 
 class TaskManager extends React.Component {
     constructor(props) {

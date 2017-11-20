@@ -5,10 +5,10 @@ var C = {
     "todo": "To Do"
 }
 
-var Constant = {
-    getStatusLabel: function (status) {
+class Constant {
+    getStatusLabel(status) {
         return C[status];
     }
 }
 
-module.exports = Constant;
+export default new Constant();

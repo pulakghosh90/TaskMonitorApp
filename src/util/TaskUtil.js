@@ -9,4 +9,4 @@ class TaskUtil {
     }
 };
 
-export default new TaskUtil();
+export default TaskUtil;
