@@ -9,10 +9,13 @@ var TaskUtil = new _TaskUtil();
 class TaskManager extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { taskObj: {} };
         this.updateTask = this._updateTask.bind(this);
         this.addTask = this._addTask.bind(this);
         this.refreshBoards = this._refreshBoards.bind(this);
+        this.moveTask = this._moveTask.bind(this);
+        this.fetchTasks = this._fetchTasks.bind(this);
+
+        this.state = { taskObj: this.fetchTasks() };
     }
     _updateTask(task) {
         TaskService.updateTask(task);
@@ -23,17 +26,23 @@ class TaskManager extends React.Component {
         this.refreshBoards();
     }
     _refreshBoards() {
-        var tasks = TaskService.fetchTasks(this.props.taskName) || [];
-        var taskObj = TaskUtil.splitTaskByStatus(tasks);
+        var taskObj = this.fetchTasks();
         this.setState({ taskObj });
     }
-    componentDidMount() {
-        this.refreshBoards();
+    _moveTask(task, direction) {
+        let status = TaskUtil.taskStatus(task.status, direction);
+        task.status = status;
+        this.updateTask(task);
+    }
+    _fetchTasks() {
+        var tasks = TaskService.fetchTasks(this.props.taskName) || [];
+        return TaskUtil.splitTaskByStatus(tasks);
     }
     render() {
-        var taskObj = this.state.taskObj;
+        var taskObj = this.fetchTasks();
         var TaskBoards = Object.keys(taskObj).map(key => {
-            return <TaskBoard key={key} status={key} tasks={taskObj[key]} updateTask={this.updateTask} addTask={this.addTask} />;
+            return <TaskBoard key={key} status={key} tasks={taskObj[key]} updateTask={this.updateTask} addTask={this.addTask}
+                moveTask={this.moveTask} />;
         });
         return (
             <div>

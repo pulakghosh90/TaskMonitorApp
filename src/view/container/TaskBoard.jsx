@@ -10,7 +10,8 @@ class TaskBoard extends React.Component {
         return (
             <div className="task-board">
                 <Label value={status} className="task-status" />
-                <TaskList boardType={this.props.status} tasks={this.props.tasks} editTask={this.props.updateTask} />
+                <TaskList boardType={this.props.status} tasks={this.props.tasks} editTask={this.props.updateTask}
+                    moveTask={this.props.moveTask} />
                 <AddTask boardType={this.props.status} addTask={this.props.addTask} />
             </div>
         );
