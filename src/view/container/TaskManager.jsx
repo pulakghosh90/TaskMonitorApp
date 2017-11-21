@@ -9,7 +9,7 @@ var TaskUtil = new _TaskUtil();
 class TaskManager extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = { taskObj: {} };
         this.updateTask = this._updateTask.bind(this);
         this.addTask = this._addTask.bind(this);
         this.refreshBoards = this._refreshBoards.bind(this);
@@ -23,11 +23,15 @@ class TaskManager extends React.Component {
         this.refreshBoards();
     }
     _refreshBoards() {
-        this.setState({});
-    }
-    render() {
         var tasks = TaskService.fetchTasks(this.props.taskName) || [];
         var taskObj = TaskUtil.splitTaskByStatus(tasks);
+        this.setState({ taskObj });
+    }
+    componentDidMount() {
+        this.refreshBoards();
+    }
+    render() {
+        var taskObj = this.state.taskObj;
         var TaskBoards = Object.keys(taskObj).map(key => {
             return <TaskBoard key={key} status={key} tasks={taskObj[key]} updateTask={this.updateTask} addTask={this.addTask} />;
         });

@@ -18606,8 +18606,6 @@ var TextBox = function (_React$Component) {
     function TextBox(props) {
         _classCallCheck(this, TextBox);
 
-        debugger;
-
         var _this = _possibleConstructorReturn(this, (TextBox.__proto__ || Object.getPrototypeOf(TextBox)).call(this, props));
 
         _this.onChange = _this._onChange.bind(_this);
@@ -18617,7 +18615,6 @@ var TextBox = function (_React$Component) {
     _createClass(TextBox, [{
         key: "_onChange",
         value: function _onChange(evt) {
-            debugger;
             this.props.onChange(evt.target.value, evt);
         }
     }, {
@@ -18682,7 +18679,7 @@ var TaskManager = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (TaskManager.__proto__ || Object.getPrototypeOf(TaskManager)).call(this, props));
 
-        _this.state = {};
+        _this.state = { taskObj: {} };
         _this.updateTask = _this._updateTask.bind(_this);
         _this.addTask = _this._addTask.bind(_this);
         _this.refreshBoards = _this._refreshBoards.bind(_this);
@@ -18704,15 +18701,21 @@ var TaskManager = function (_React$Component) {
     }, {
         key: "_refreshBoards",
         value: function _refreshBoards() {
-            this.setState({});
+            var tasks = TaskService.fetchTasks(this.props.taskName) || [];
+            var taskObj = TaskUtil.splitTaskByStatus(tasks);
+            this.setState({ taskObj: taskObj });
+        }
+    }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.refreshBoards();
         }
     }, {
         key: "render",
         value: function render() {
             var _this2 = this;
 
-            var tasks = TaskService.fetchTasks(this.props.taskName) || [];
-            var taskObj = TaskUtil.splitTaskByStatus(tasks);
+            var taskObj = this.state.taskObj;
             var TaskBoards = Object.keys(taskObj).map(function (key) {
                 return _react2.default.createElement(_TaskBoard2.default, { key: key, status: key, tasks: taskObj[key], updateTask: _this2.updateTask, addTask: _this2.addTask });
             });
