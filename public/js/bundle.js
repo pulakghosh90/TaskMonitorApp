@@ -19244,7 +19244,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var tasks = [{ id: 1, name: "Eating Lunch", status: "doing" }, { id: 2, name: "Eating Lunch", status: "doing" }, { id: 3, name: "Ate Breakfast", status: "done" }, { id: 4, name: "Ate Breakfast", status: "done" }, { id: 5, name: "Eat Dinner", status: "todo" }];
+var tasksJson = [{ id: 1, name: "Verify Defects", status: "todo" }, { id: 2, name: "Code Review", status: "todo" }, { id: 3, name: "Update Status", status: "doing" }, { id: 4, name: "React Session", status: "doing" }, { id: 5, name: "Standup", status: "done" }, { id: 6, name: "Coding", status: "done" }];
 
 var TaskService = function () {
     function TaskService() {
@@ -19252,14 +19252,25 @@ var TaskService = function () {
     }
 
     _createClass(TaskService, [{
+        key: "retrieveFromLocalStorage",
+        value: function retrieveFromLocalStorage() {
+            return JSON.parse(localStorage.getItem("tasks")) || tasksJson;
+        }
+    }, {
+        key: "saveToLocalStorage",
+        value: function saveToLocalStorage(tasks) {
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+    }, {
         key: "fetchTasks",
         value: function fetchTasks(taskName) {
             if (taskName) return this.search(taskName);
-            return tasks;
+            return this.retrieveFromLocalStorage();
         }
     }, {
         key: "search",
         value: function search(name) {
+            var tasks = this.retrieveFromLocalStorage();
             return tasks.filter(function (t) {
                 return t.name.toLowerCase().startsWith(name.toLowerCase());
             });
@@ -19267,20 +19278,24 @@ var TaskService = function () {
     }, {
         key: "addTask",
         value: function addTask(task) {
+            var tasks = this.retrieveFromLocalStorage();
             tasks.push({
                 id: tasks.length + 1,
                 name: task.name,
                 status: task.status
             });
+            this.saveToLocalStorage(tasks);
         }
     }, {
         key: "updateTask",
         value: function updateTask(newTask) {
+            var tasks = this.retrieveFromLocalStorage();
             var oldTask = tasks.filter(function (t) {
                 return t.id == newTask.id;
             })[0];
             oldTask.name = newTask.name;
             oldTask.status = newTask.status;
+            this.saveToLocalStorage(tasks);
         }
     }]);
 
