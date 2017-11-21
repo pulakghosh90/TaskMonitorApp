@@ -7,6 +7,7 @@ class Task extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            deleteIcon: "fa fa-trash-o task-edit",
             pencilIcon: "fa fa-pencil task-edit",
             arrowLeftIcon: "fa fa-arrow-left task-edit",
             arrowRightIcon: "fa fa-arrow-right task-edit",
@@ -20,9 +21,11 @@ class Task extends React.Component {
         this.onClose = this._onClose.bind(this);
         this.moveTaskToRight = this._moveTaskToRight.bind(this);
         this.moveTaskToLeft = this._moveTaskToLeft.bind(this);
+        this.deleteTask = this._deleteTask.bind(this);
     }
     _onMouseOver() {
         this.setState({
+            deleteIcon: "fa fa-trash-o task-edit task-edit-operation",
             pencilIcon: "fa fa-pencil task-edit task-edit-operation",
             arrowLeftIcon: "fa fa-arrow-left task-edit task-edit-operation",
             arrowRightIcon: "fa fa-arrow-right task-edit task-edit-operation"
@@ -30,6 +33,7 @@ class Task extends React.Component {
     }
     _onMouseOut() {
         this.setState({
+            deleteIcon: "fa fa-trash-o task-edit",
             pencilIcon: "fa fa-pencil task-edit",
             arrowLeftIcon: "fa fa-arrow-left task-edit",
             arrowRightIcon: "fa fa-arrow-right task-edit"
@@ -55,17 +59,21 @@ class Task extends React.Component {
     _moveTaskToLeft() {
         this.props.moveTask(this.state.task, "left");
     }
+    _deleteTask() {
+        this.props.deleteTask(this.state.task);
+    }
     render() {
         var task = this.state.task;
         var className = "task list-card list-card-title active-card";
-        let canMoveToRight = task.status === "todo" || task.status === "doing";
-        let canMoveToLeft = task.status === "done" || task.status === "doing";
+        var canMoveToRight = task.status === "todo" || task.status === "doing";
+        var canMoveToLeft = task.status === "done" || task.status === "doing";
         return (
             <div>
                 {
                     !this.state.edit &&
                     <div className={className} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
                         <Label value={task.name} style={{ paddingLeft: "5px", verticalAlign: "middle" }} />
+                        <Icon className={this.state.deleteIcon} onClick={this.deleteTask} style={{ paddingLeft: "10px" }} />
                         <Icon className={this.state.pencilIcon} style={{ paddingLeft: "10px" }} onClick={this.toggleEditor} />
                         {
                             canMoveToRight &&

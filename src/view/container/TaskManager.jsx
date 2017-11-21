@@ -14,6 +14,7 @@ class TaskManager extends React.Component {
         this.refreshBoards = this._refreshBoards.bind(this);
         this.moveTask = this._moveTask.bind(this);
         this.fetchTasks = this._fetchTasks.bind(this);
+        this.deleteTask = this._deleteTask.bind(this);
 
         this.state = { taskObj: this.fetchTasks() };
     }
@@ -30,19 +31,22 @@ class TaskManager extends React.Component {
         this.setState({ taskObj });
     }
     _moveTask(task, direction) {
-        let status = TaskUtil.taskStatus(task.status, direction);
-        task.status = status;
+        task.status = TaskUtil.taskStatus(task.status, direction);
         this.updateTask(task);
     }
     _fetchTasks() {
         var tasks = TaskService.fetchTasks(this.props.taskName) || [];
         return TaskUtil.splitTaskByStatus(tasks);
     }
+    _deleteTask(task) {
+        TaskService.deleteTask(task);
+        this.refreshBoards();
+    }
     render() {
         var taskObj = this.fetchTasks();
         var TaskBoards = Object.keys(taskObj).map(key => {
             return <TaskBoard key={key} status={key} tasks={taskObj[key]} updateTask={this.updateTask} addTask={this.addTask}
-                moveTask={this.moveTask} />;
+                moveTask={this.moveTask} deleteTask={this.deleteTask} />;
         });
         return (
             <div>

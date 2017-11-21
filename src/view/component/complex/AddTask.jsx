@@ -12,7 +12,7 @@ class AddTask extends React.Component {
         this.add = this._add.bind(this);
         this.close = this._close.bind(this);
     }
-    _toggleEditor(evt) {
+    _toggleEditor() {
         this.setState({
             edit: !this.state.edit
         });

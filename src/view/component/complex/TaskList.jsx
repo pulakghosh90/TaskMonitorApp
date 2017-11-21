@@ -6,7 +6,7 @@ class TaskList extends React.Component {
         var tasks = this.props.tasks || [];
         var TaskComponents = tasks.map(
             task => <Task key={task.id} task={task} editTask={this.props.editTask}
-                moveTask={this.props.moveTask} />
+                moveTask={this.props.moveTask} deleteTask={this.props.deleteTask} />
         );
         return (
             <div style={{ margin: "5px" }}>

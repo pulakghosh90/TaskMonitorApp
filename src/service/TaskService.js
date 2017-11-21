@@ -40,6 +40,11 @@ class TaskService {
         oldTask.status = newTask.status;
         this.saveToLocalStorage(tasks);
     }
+    deleteTask(taskToBeDel) {
+        var tasks = this.retrieveFromLocalStorage();
+        tasks = tasks.filter(t => t.id != taskToBeDel.id);
+        this.saveToLocalStorage(tasks);
+    }
 }
 
 export default TaskService;

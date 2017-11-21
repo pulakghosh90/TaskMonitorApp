@@ -1,15 +1,15 @@
 var webpack = require("webpack");
 var path = require("path");
 
-var BUILD_DIR = path.resolve(__dirname, "public/js");
-var APP_DIR = path.resolve(__dirname, "src");
-var filename = "bundle.js";
+const BUILD_DIR = path.resolve(__dirname, "public/js");
+const APP_DIR = path.resolve(__dirname, "src");
+const filename = "bundle.js";
 
 module.exports = {
     entry: APP_DIR + "/app/App.jsx",
     output: {
         path: BUILD_DIR,
-        filename: filename
+        filename
     },
     module: {
         rules: [

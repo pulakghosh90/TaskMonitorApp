@@ -18684,6 +18684,7 @@ var TaskManager = function (_React$Component) {
         _this.refreshBoards = _this._refreshBoards.bind(_this);
         _this.moveTask = _this._moveTask.bind(_this);
         _this.fetchTasks = _this._fetchTasks.bind(_this);
+        _this.deleteTask = _this._deleteTask.bind(_this);
 
         _this.state = { taskObj: _this.fetchTasks() };
         return _this;
@@ -18710,8 +18711,7 @@ var TaskManager = function (_React$Component) {
     }, {
         key: "_moveTask",
         value: function _moveTask(task, direction) {
-            var status = TaskUtil.taskStatus(task.status, direction);
-            task.status = status;
+            task.status = TaskUtil.taskStatus(task.status, direction);
             this.updateTask(task);
         }
     }, {
@@ -18721,6 +18721,12 @@ var TaskManager = function (_React$Component) {
             return TaskUtil.splitTaskByStatus(tasks);
         }
     }, {
+        key: "_deleteTask",
+        value: function _deleteTask(task) {
+            TaskService.deleteTask(task);
+            this.refreshBoards();
+        }
+    }, {
         key: "render",
         value: function render() {
             var _this2 = this;
@@ -18728,7 +18734,7 @@ var TaskManager = function (_React$Component) {
             var taskObj = this.fetchTasks();
             var TaskBoards = Object.keys(taskObj).map(function (key) {
                 return _react2.default.createElement(_TaskBoard2.default, { key: key, status: key, tasks: taskObj[key], updateTask: _this2.updateTask, addTask: _this2.addTask,
-                    moveTask: _this2.moveTask });
+                    moveTask: _this2.moveTask, deleteTask: _this2.deleteTask });
             });
             return _react2.default.createElement(
                 "div",
@@ -18798,7 +18804,7 @@ var TaskBoard = function (_React$Component) {
                 { className: "task-board" },
                 _react2.default.createElement(_Label2.default, { value: status, className: "task-status" }),
                 _react2.default.createElement(_TaskList2.default, { boardType: this.props.status, tasks: this.props.tasks, editTask: this.props.updateTask,
-                    moveTask: this.props.moveTask }),
+                    moveTask: this.props.moveTask, deleteTask: this.props.deleteTask }),
                 _react2.default.createElement(_AddTask2.default, { boardType: this.props.status, addTask: this.props.addTask })
             );
         }
@@ -18855,7 +18861,7 @@ var TaskList = function (_React$Component) {
             var tasks = this.props.tasks || [];
             var TaskComponents = tasks.map(function (task) {
                 return _react2.default.createElement(_Task2.default, { key: task.id, task: task, editTask: _this2.props.editTask,
-                    moveTask: _this2.props.moveTask });
+                    moveTask: _this2.props.moveTask, deleteTask: _this2.props.deleteTask });
             });
             return _react2.default.createElement(
                 "div",
@@ -18916,6 +18922,7 @@ var Task = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this, props));
 
         _this.state = {
+            deleteIcon: "fa fa-trash-o task-edit",
             pencilIcon: "fa fa-pencil task-edit",
             arrowLeftIcon: "fa fa-arrow-left task-edit",
             arrowRightIcon: "fa fa-arrow-right task-edit",
@@ -18929,6 +18936,7 @@ var Task = function (_React$Component) {
         _this.onClose = _this._onClose.bind(_this);
         _this.moveTaskToRight = _this._moveTaskToRight.bind(_this);
         _this.moveTaskToLeft = _this._moveTaskToLeft.bind(_this);
+        _this.deleteTask = _this._deleteTask.bind(_this);
         return _this;
     }
 
@@ -18936,6 +18944,7 @@ var Task = function (_React$Component) {
         key: "_onMouseOver",
         value: function _onMouseOver() {
             this.setState({
+                deleteIcon: "fa fa-trash-o task-edit task-edit-operation",
                 pencilIcon: "fa fa-pencil task-edit task-edit-operation",
                 arrowLeftIcon: "fa fa-arrow-left task-edit task-edit-operation",
                 arrowRightIcon: "fa fa-arrow-right task-edit task-edit-operation"
@@ -18945,6 +18954,7 @@ var Task = function (_React$Component) {
         key: "_onMouseOut",
         value: function _onMouseOut() {
             this.setState({
+                deleteIcon: "fa fa-trash-o task-edit",
                 pencilIcon: "fa fa-pencil task-edit",
                 arrowLeftIcon: "fa fa-arrow-left task-edit",
                 arrowRightIcon: "fa fa-arrow-right task-edit"
@@ -18981,6 +18991,11 @@ var Task = function (_React$Component) {
             this.props.moveTask(this.state.task, "left");
         }
     }, {
+        key: "_deleteTask",
+        value: function _deleteTask() {
+            this.props.deleteTask(this.state.task);
+        }
+    }, {
         key: "render",
         value: function render() {
             var task = this.state.task;
@@ -18994,6 +19009,7 @@ var Task = function (_React$Component) {
                     "div",
                     { className: className, onMouseOver: this.onMouseOver, onMouseOut: this.onMouseOut },
                     _react2.default.createElement(_Label2.default, { value: task.name, style: { paddingLeft: "5px", verticalAlign: "middle" } }),
+                    _react2.default.createElement(_Icon2.default, { className: this.state.deleteIcon, onClick: this.deleteTask, style: { paddingLeft: "10px" } }),
                     _react2.default.createElement(_Icon2.default, { className: this.state.pencilIcon, style: { paddingLeft: "10px" }, onClick: this.toggleEditor }),
                     canMoveToRight && _react2.default.createElement(_Icon2.default, { className: this.state.arrowRightIcon, style: { paddingLeft: "10px" }, onClick: this.moveTaskToRight }),
                     canMoveToLeft && _react2.default.createElement(_Icon2.default, { className: this.state.arrowLeftIcon, onClick: this.moveTaskToLeft })
@@ -19153,7 +19169,7 @@ var AddTask = function (_React$Component) {
 
     _createClass(AddTask, [{
         key: "_toggleEditor",
-        value: function _toggleEditor(evt) {
+        value: function _toggleEditor() {
             this.setState({
                 edit: !this.state.edit
             });
@@ -19295,6 +19311,15 @@ var TaskService = function () {
             })[0];
             oldTask.name = newTask.name;
             oldTask.status = newTask.status;
+            this.saveToLocalStorage(tasks);
+        }
+    }, {
+        key: "deleteTask",
+        value: function deleteTask(taskToBeDel) {
+            var tasks = this.retrieveFromLocalStorage();
+            tasks = tasks.filter(function (t) {
+                return t.id != taskToBeDel.id;
+            });
             this.saveToLocalStorage(tasks);
         }
     }]);
