@@ -14,16 +14,8 @@ class Task extends React.Component {
             edit: false,
             task: this.props.task || {}
         };
-        this.onMouseOver = this._onMouseOver.bind(this);
-        this.onMouseOut = this._onMouseOut.bind(this);
-        this.toggleEditor = this._toggleEditor.bind(this);
-        this.editTask = this._editTask.bind(this);
-        this.onClose = this._onClose.bind(this);
-        this.moveTaskToRight = this._moveTaskToRight.bind(this);
-        this.moveTaskToLeft = this._moveTaskToLeft.bind(this);
-        this.deleteTask = this._deleteTask.bind(this);
     }
-    _onMouseOver() {
+    onMouseOver = () => {
         this.setState({
             deleteIcon: "fa fa-trash-o task-edit task-edit-operation",
             pencilIcon: "fa fa-pencil task-edit task-edit-operation",
@@ -31,7 +23,7 @@ class Task extends React.Component {
             arrowRightIcon: "fa fa-arrow-right task-edit task-edit-operation"
         });
     }
-    _onMouseOut() {
+    onMouseOut = () => {
         this.setState({
             deleteIcon: "fa fa-trash-o task-edit",
             pencilIcon: "fa fa-pencil task-edit",
@@ -39,30 +31,30 @@ class Task extends React.Component {
             arrowRightIcon: "fa fa-arrow-right task-edit"
         });
     }
-    _toggleEditor() {
+    toggleEditor = () => {
         this.setState({
             edit: !this.state.edit
         });
     }
-    _editTask(taskName) {
+    editTask = (taskName) => {
         var task = this.state.task;
         task.name = taskName;
         this.props.editTask(task);
         this.toggleEditor();
     }
-    _onClose() {
+    onClose = () => {
         this.toggleEditor();
     }
-    _moveTaskToRight() {
+    moveTaskToRight = () => {
         this.props.moveTask(this.state.task, "right");
     }
-    _moveTaskToLeft() {
+    moveTaskToLeft = () => {
         this.props.moveTask(this.state.task, "left");
     }
-    _deleteTask() {
+    deleteTask = () => {
         this.props.deleteTask(this.state.task);
     }
-    render() {
+    render = () => {
         var task = this.state.task;
         var className = "task list-card list-card-title active-card";
         var canMoveToRight = task.status === "todo" || task.status === "doing";

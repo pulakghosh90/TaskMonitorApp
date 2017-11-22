@@ -9,22 +9,19 @@ class TaskEditor extends React.Component {
             taskName: this.props.taskName || "",
             focus: this.props.focus || true
         };
-        this.onChange = this._onChange.bind(this);
-        this.onClose = this._onClose.bind(this);
-        this.onEdit = this._onEdit.bind(this);
     }
-    _onChange(evt) {
+    onChange = (evt) => {
         this.setState({
             taskName: evt.target.value
         });
     }
-    _onClose(evt) {
+    onClose = (evt) => {
         this.props.onClose(evt);
     }
-    _onEdit(evt) {
+    onEdit = (evt) => {
         this.props.onEdit(this.state.taskName, evt);
     }
-    render() {
+    render = () => {
         return (
             <div className="task-editor" style={this.props.style}>
                 <TextArea className="task-textarea" value={this.state.taskName} focus={this.state.focus}

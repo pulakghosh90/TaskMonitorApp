@@ -8,16 +8,13 @@ class AddTask extends React.Component {
         this.state = {
             edit: false
         };
-        this.toggleEditor = this._toggleEditor.bind(this);
-        this.add = this._add.bind(this);
-        this.close = this._close.bind(this);
     }
-    _toggleEditor() {
+    toggleEditor = () => {
         this.setState({
             edit: !this.state.edit
         });
     }
-    _add(name) {
+    add = (name) => {
         if (name) {
             this.props.addTask(
                 {
@@ -28,10 +25,10 @@ class AddTask extends React.Component {
         }
         this.toggleEditor();
     }
-    _close() {
+    close = () => {
         this.toggleEditor();
     }
-    render() {
+    render = () => {
         return (
             <div>
                 {!this.state.edit && <Button label="Add a Task..." className="task-btn" onClick={this.toggleEditor} />}
