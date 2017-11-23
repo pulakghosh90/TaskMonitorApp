@@ -21,7 +21,7 @@ class TaskEditor extends React.Component {
     onEdit = (evt) => {
         this.props.onEdit(this.state.taskName, evt);
     }
-    render = () => {
+    render() {
         return (
             <div className="task-editor" style={this.props.style}>
                 <TextArea className="task-textarea" value={this.state.taskName} focus={this.state.focus}

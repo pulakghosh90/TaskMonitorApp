@@ -54,7 +54,7 @@ class Task extends React.Component {
     deleteTask = () => {
         this.props.deleteTask(this.state.task);
     }
-    render = () => {
+    render() {
         var task = this.state.task;
         var className = "task list-card list-card-title active-card";
         var canMoveToRight = task.status === "todo" || task.status === "doing";

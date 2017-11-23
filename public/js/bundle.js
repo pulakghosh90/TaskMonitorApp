@@ -995,6 +995,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -1037,23 +1039,26 @@ var TaskEditor = function (_React$Component) {
             _this.props.onEdit(_this.state.taskName, evt);
         };
 
-        _this.render = function () {
-            return _react2.default.createElement(
-                "div",
-                { className: "task-editor", style: _this.props.style },
-                _react2.default.createElement(_TextArea2.default, { className: "task-textarea", value: _this.state.taskName, focus: _this.state.focus,
-                    onChange: _this.onChange }),
-                _react2.default.createElement(_Button2.default, { label: "Submit", className: "task-btn", onClick: _this.onEdit }),
-                _react2.default.createElement(_Button2.default, { label: "Close", className: "task-btn", onClick: _this.onClose })
-            );
-        };
-
         _this.state = {
             taskName: _this.props.taskName || "",
             focus: _this.props.focus || true
         };
         return _this;
     }
+
+    _createClass(TaskEditor, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "task-editor", style: this.props.style },
+                _react2.default.createElement(_TextArea2.default, { className: "task-textarea", value: this.state.taskName, focus: this.state.focus,
+                    onChange: this.onChange }),
+                _react2.default.createElement(_Button2.default, { label: "Submit", className: "task-btn", onClick: this.onEdit }),
+                _react2.default.createElement(_Button2.default, { label: "Close", className: "task-btn", onClick: this.onClose })
+            );
+        }
+    }]);
 
     return TaskEditor;
 }(_react2.default.Component);
@@ -18449,6 +18454,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -18478,18 +18485,9 @@ var TaskMonitor = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (TaskMonitor.__proto__ || Object.getPrototypeOf(TaskMonitor)).call(this, props));
 
         _this.handleSearch = function (taskName) {
-            _this.setState({
-                taskName: taskName
+            _this.setState(function (prevState) {
+                taskName;
             });
-        };
-
-        _this.render = function () {
-            return _react2.default.createElement(
-                "div",
-                { className: "task-monitor" },
-                _react2.default.createElement(_ToolBar2.default, { search: _this.handleSearch }),
-                _react2.default.createElement(_TaskManager2.default, _this.state)
-            );
         };
 
         _this.state = {
@@ -18497,6 +18495,18 @@ var TaskMonitor = function (_React$Component) {
         };
         return _this;
     }
+
+    _createClass(TaskMonitor, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "task-monitor" },
+                _react2.default.createElement(_ToolBar2.default, { search: this.handleSearch }),
+                _react2.default.createElement(_TaskManager2.default, this.state)
+            );
+        }
+    }]);
 
     return TaskMonitor;
 }(_react2.default.Component);
@@ -18624,6 +18634,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -18689,22 +18701,27 @@ var TaskManager = function (_React$Component) {
             _this.refreshBoards();
         };
 
-        _this.render = function () {
-            var taskObj = _this.fetchTasks();
+        _this.state = { taskObj: _this.fetchTasks() };
+        return _this;
+    }
+
+    _createClass(TaskManager, [{
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var taskObj = this.fetchTasks();
             var TaskBoards = Object.keys(taskObj).map(function (key) {
-                return _react2.default.createElement(_TaskBoard2.default, { key: key, status: key, tasks: taskObj[key], updateTask: _this.updateTask, addTask: _this.addTask,
-                    moveTask: _this.moveTask, deleteTask: _this.deleteTask });
+                return _react2.default.createElement(_TaskBoard2.default, { key: key, status: key, tasks: taskObj[key], updateTask: _this2.updateTask, addTask: _this2.addTask,
+                    moveTask: _this2.moveTask, deleteTask: _this2.deleteTask });
             });
             return _react2.default.createElement(
                 "div",
                 null,
                 TaskBoards
             );
-        };
-
-        _this.state = { taskObj: _this.fetchTasks() };
-        return _this;
-    }
+        }
+    }]);
 
     return TaskManager;
 }(_react2.default.Component);
@@ -18849,6 +18866,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -18928,27 +18947,6 @@ var Task = function (_React$Component) {
             _this.props.deleteTask(_this.state.task);
         };
 
-        _this.render = function () {
-            var task = _this.state.task;
-            var className = "task list-card list-card-title active-card";
-            var canMoveToRight = task.status === "todo" || task.status === "doing";
-            var canMoveToLeft = task.status === "done" || task.status === "doing";
-            return _react2.default.createElement(
-                "div",
-                null,
-                !_this.state.edit && _react2.default.createElement(
-                    "div",
-                    { className: className, onMouseOver: _this.onMouseOver, onMouseOut: _this.onMouseOut },
-                    _react2.default.createElement(_Label2.default, { value: task.name, style: { paddingLeft: "5px", verticalAlign: "middle" } }),
-                    _react2.default.createElement(_Icon2.default, { className: _this.state.deleteIcon, onClick: _this.deleteTask, style: { paddingLeft: "10px" } }),
-                    _react2.default.createElement(_Icon2.default, { className: _this.state.pencilIcon, style: { paddingLeft: "10px" }, onClick: _this.toggleEditor }),
-                    canMoveToRight && _react2.default.createElement(_Icon2.default, { className: _this.state.arrowRightIcon, style: { paddingLeft: "10px" }, onClick: _this.moveTaskToRight }),
-                    canMoveToLeft && _react2.default.createElement(_Icon2.default, { className: _this.state.arrowLeftIcon, onClick: _this.moveTaskToLeft })
-                ),
-                _this.state.edit && _react2.default.createElement(_TaskEditor2.default, { style: { margin: "0px" }, taskName: task.name, onEdit: _this.editTask, onClose: _this.onClose })
-            );
-        };
-
         _this.state = {
             deleteIcon: "fa fa-trash-o task-edit",
             pencilIcon: "fa fa-pencil task-edit",
@@ -18959,6 +18957,30 @@ var Task = function (_React$Component) {
         };
         return _this;
     }
+
+    _createClass(Task, [{
+        key: "render",
+        value: function render() {
+            var task = this.state.task;
+            var className = "task list-card list-card-title active-card";
+            var canMoveToRight = task.status === "todo" || task.status === "doing";
+            var canMoveToLeft = task.status === "done" || task.status === "doing";
+            return _react2.default.createElement(
+                "div",
+                null,
+                !this.state.edit && _react2.default.createElement(
+                    "div",
+                    { className: className, onMouseOver: this.onMouseOver, onMouseOut: this.onMouseOut },
+                    _react2.default.createElement(_Label2.default, { value: task.name, style: { paddingLeft: "5px", verticalAlign: "middle" } }),
+                    _react2.default.createElement(_Icon2.default, { className: this.state.deleteIcon, onClick: this.deleteTask, style: { paddingLeft: "10px" } }),
+                    _react2.default.createElement(_Icon2.default, { className: this.state.pencilIcon, style: { paddingLeft: "10px" }, onClick: this.toggleEditor }),
+                    canMoveToRight && _react2.default.createElement(_Icon2.default, { className: this.state.arrowRightIcon, style: { paddingLeft: "10px" }, onClick: this.moveTaskToRight }),
+                    canMoveToLeft && _react2.default.createElement(_Icon2.default, { className: this.state.arrowLeftIcon, onClick: this.moveTaskToLeft })
+                ),
+                this.state.edit && _react2.default.createElement(_TaskEditor2.default, { style: { margin: "0px" }, taskName: task.name, onEdit: this.editTask, onClose: this.onClose })
+            );
+        }
+    }]);
 
     return Task;
 }(_react2.default.Component);
@@ -19069,6 +19091,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -19117,20 +19141,23 @@ var AddTask = function (_React$Component) {
             _this.toggleEditor();
         };
 
-        _this.render = function () {
-            return _react2.default.createElement(
-                "div",
-                null,
-                !_this.state.edit && _react2.default.createElement(_Button2.default, { label: "Add a Task...", className: "task-btn", onClick: _this.toggleEditor }),
-                _this.state.edit && _react2.default.createElement(_TaskEditor2.default, { onClose: _this.close, onEdit: _this.add })
-            );
-        };
-
         _this.state = {
             edit: false
         };
         return _this;
     }
+
+    _createClass(AddTask, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                !this.state.edit && _react2.default.createElement(_Button2.default, { label: "Add a Task...", className: "task-btn", onClick: this.toggleEditor }),
+                this.state.edit && _react2.default.createElement(_TaskEditor2.default, { onClose: this.close, onEdit: this.add })
+            );
+        }
+    }]);
 
     return AddTask;
 }(_react2.default.Component);

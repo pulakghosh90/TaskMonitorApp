@@ -10,11 +10,11 @@ class TaskMonitor extends React.Component {
         };
     }
     handleSearch = (taskName) => {
-        this.setState({
+        this.setState((prevState) => {
             taskName
         });
     }
-    render = () => {
+    render() {
         return (
             <div className="task-monitor">
                 <ToolBar search={this.handleSearch} />

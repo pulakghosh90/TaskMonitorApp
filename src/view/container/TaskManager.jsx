@@ -35,7 +35,7 @@ class TaskManager extends React.Component {
         TaskService.deleteTask(task);
         this.refreshBoards();
     }
-    render = () => {
+    render() {
         var taskObj = this.fetchTasks();
         var TaskBoards = Object.keys(taskObj).map(key => {
             return <TaskBoard key={key} status={key} tasks={taskObj[key]} updateTask={this.updateTask} addTask={this.addTask}
